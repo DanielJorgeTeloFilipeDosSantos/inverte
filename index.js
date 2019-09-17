@@ -3,8 +3,8 @@ const hbs     = require('hbs');
 const path    = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+require('dotenv').config()
 const app = express();
-const port = 3000
 
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
@@ -21,7 +21,11 @@ app.use('/', indexRouter);
 app.use('/register', registerRouter);
 app.use('/signin', signinRouter);
 
-mongoose.connect('mongodb://localhost:27017/test?connectTimeoutMS=1000&bufferCommands=false',{ useNewUrlParser: true });
 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/inverte-v2')
+
+
+
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
