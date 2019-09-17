@@ -22,7 +22,10 @@ app.use('/register', registerRouter);
 app.use('/signin', signinRouter);
 
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/inverte-v2')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/inverte-v2', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
 
 
 
