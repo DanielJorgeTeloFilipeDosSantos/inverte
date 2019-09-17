@@ -3,6 +3,7 @@ const hbs     = require('hbs');
 const path    = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt')
 require('dotenv').config()
 const app = express();
 
